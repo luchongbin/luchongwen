@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">崇文账本</string>
+    <string name="tab_bar_text_home">记账本</string>
+    <string name="tab_bar_text_profile">我的</string>
+    <string name="userName_1">姓名：</string>
+    <string name="nickName_1">昵称：</string>
+    <string name="mobilePhone_1">电话：</string>
+    <string name="remarks_1">备注：</string>
+    <string name="userName">账户名：</string>
+    <string name="nickName">昵&#160;&#160;&#8210;称：</string>
+    <string name="mobilePhone">电&#160;&#160;&#8210;话：</string>
+    <string name="unpaid_amount">未结金额：</string>
+    <string name="yijie_amount">已结金额：</string>
+    <string name="total_amount">总金额：</string>
+    <string name="hour">小时</string>
+    <string name="yuan">元</string>
+
+
+    <string name="add">添加</string>
+    <string name="save">保存</string>
+    <string name="add_cashUser">添加账户</string>
+    <string name="cashUser_tile">所有账户</string>
+    <string name="cashbook_tile">账本信息</string>
+    <string name="personal_center_title">个人信息</string>
+    <string name="main_call">再按一次返回桌面</string>
+    <string name="dig_flat_total_hour">挖平总时长：</string>
+    <string name="fracture_total_hour">破碎总时长：</string>
+
+    <string name="dig_flat_total_amount">挖平总金额：</string>
+    <string name="fracture_total_amount">破碎总金额：</string>
+
+    <string name="dateTime">记账时间：</string>
+    <string name="dig_flat">挖&#8195;平：</string>
+    <string name="dig_flat_money">挖平(元)</string>
+    <string name="fracture">破&#8195;碎：</string>
+    <string name="company">公&#160;&#160;&#8210;司：</string>
+    <string name="fracture_money">破碎(元)</string>
+    <string name="date_time">日期/时间</string>
+    <string name="remarks">备注</string>
+
+</resources>

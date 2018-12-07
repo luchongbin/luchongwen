@@ -1,0 +1,75 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="mTitleModel"
+            type="com.luchongbin.mycashbook.model.TitleModel"/>
+        <variable
+            name="mBaseViewModel"
+            type="com.luchongbin.mycashbook.base.BaseViewModel"/>
+    </data>
+    <FrameLayout
+        android:id="@+id/titleFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/titleback"
+        android:fitsSystemWindows="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:id="@+id/back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/selector_back_btn"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@color/black"
+                android:onClick="@{mBaseViewModel::onClickLiftBack}"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/common_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:maxEms="10"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18sp"
+                android:text="@{mTitleModel.title}"/>
+
+            <TextView
+                android:id="@+id/action"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:gravity="center"
+                android:minHeight="40dp"
+                android:minWidth="40dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_15sp"
+                android:text="@{mTitleModel.rightText}"
+                android:onClick="@{mBaseViewModel::onClickRightView}"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/iv_right"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:gravity="center"
+                android:minHeight="40dp"
+                android:minWidth="40dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_15sp"
+                android:onClick="@{mBaseViewModel::onClickRightImageView}"
+                android:visibility="gone"  />
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

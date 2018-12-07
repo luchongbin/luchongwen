@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="mCashBookModel"
+            type="com.luchongbin.mycashbook.model.CashBookModel" />
+
+        <variable
+            name="mAddCashBookViewModel"
+            type="com.luchongbin.mycashbook.viewModel.AddCashBookViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent">
+
+        <include
+            android:id="@+id/ic_title"
+            layout="@layout/title"
+            app:mBaseViewModel="@{mAddCashBookViewModel}"
+            app:mTitleModel="@{mCashBookModel}" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ic_title"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/margin_8">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_25"
+                android:layout_marginTop="@dimen/margin_15"
+                android:layout_marginEnd="@dimen/margin_25">
+
+                <LinearLayout
+                    android:id="@+id/rl_digFlat_hour"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="挖平时长："
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/et_digFlat_hour"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/translucent"
+                        android:focusable="@{mCashBookModel.editable?true:false}"
+                        android:hint="请输入挖平时长"
+                        android:inputType="number|numberDecimal"
+                        android:maxLength="20"
+                        android:maxLines="1"
+                        android:text="@{mCashBookModel.digFlatHour}"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        app:addTextChangedListener="@{mAddCashBookViewModel.mTextWatcher}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="@string/yuan"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rl_digFlat_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_below="@+id/rl_digFlat_hour"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="挖平金额："
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/et_digFlat_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/translucent"
+                        android:focusable="@{mCashBookModel.editable?true:false}"
+                        android:hint="请输入挖平金额"
+                        android:inputType="number|numberDecimal"
+                        android:maxLength="20"
+                        android:maxLines="1"
+                        android:text="@{mCashBookModel.digFlatTotalAmount}"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        app:addTextChangedListener="@{mAddCashBookViewModel.mTextWatcher}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="@string/yuan"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rl_fracture_hour"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_below="@+id/rl_digFlat_amount"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="破碎时长："
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/et_fracture_hour"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/translucent"
+                        android:focusable="@{mCashBookModel.editable?true:false}"
+                        android:hint="请输入破碎时长"
+                        android:inputType="number|numberDecimal"
+                        android:maxLength="12"
+                        android:maxLines="1"
+                        android:text="@{mCashBookModel.fractureHour}"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        app:addTextChangedListener="@{mAddCashBookViewModel.mTextWatcher}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="@string/yuan"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rl_fracture_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_below="@+id/rl_fracture_hour"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="破碎金额："
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/et_fracture_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/translucent"
+                        android:focusable="@{mCashBookModel.editable?true:false}"
+                        android:hint="请输入破碎金额"
+                        android:inputType="number|numberDecimal"
+                        android:text="@{mCashBookModel.fractureTotalAmount}"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        app:addTextChangedListener="@{mAddCashBookViewModel.mTextWatcher}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="@string/yuan"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rl_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_below="@+id/rl_fracture_amount"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="施工日期："
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/et_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/margin_10"
+                        android:background="@drawable/translucent"
+                        android:focusable="@{mCashBookModel.editable?true:false}"
+                        android:hint="请输入日期"
+                        android:onClick="@{mAddCashBookViewModel::selectData}"
+                        android:text="@{mCashBookModel.dateTime}"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_remarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rl_data"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/remarks"
+                        android:textSize="@dimen/text_size_18sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/et_remarks"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_100"
+                        android:background="@drawable/translucent"
+                        android:focusable="@{mCashBookModel.editable?true:false}"
+                        android:gravity="top"
+                        android:maxLines="10"
+                        android:text="@{mCashBookModel.remarks}"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_below="@+id/ll_remarks"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_30"
+                    android:layout_marginEnd="@dimen/margin_2"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="施工签字："
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etAutograph"
+                        android:layout_width="@dimen/margin_140"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/translucent"
+                        android:focusable="@{mCashBookModel.autograph==null ||mCashBookModel.autograph.length() ==0?true:false}"
+                        android:hint="请输入施工签字"
+                        android:text="@{mCashBookModel.autograph}"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        app:addTextChangedListener="@{mAddCashBookViewModel.mTextWatcher1}" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="@dimen/margin_200"
+                    android:layout_height="@dimen/margin_40"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/margin_20"
+                    android:background="@drawable/translucent_red"
+                    android:gravity="center"
+                    android:text="删除"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:textStyle="bold"
+                    android:visibility="@{mCashBookModel.editable?View.GONE:View.VISIBLE}"
+                    android:onClick="@{mAddCashBookViewModel::deleteCashBook}"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+</layout>

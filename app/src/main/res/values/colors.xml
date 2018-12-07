@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="title_black">#F7F7F7</color>
+    <color name="white">#ffffff</color>
+    <color name="back">#B2B2B2</color>
+    <color name="edit_save_btn_color_click">#ffffffff</color>
+    <color name="edit_save_btn_color_disable">#ffa8c6ed</color>
+    <color name="bg_list_divider">#DDDDDD</color>
+    <color name="transparent">#00000000</color>
+    <color name="black">#ff000000</color>
+    <color name="tab_text_normal">#717C7E</color>
+    <color name="cut_off_rule_normal">#dddddd</color>
+    <color name="text_yellow_normal">#F4D434</color>
+    <color name="appbackground">#eeeeee</color>
+    <color name="titleback">#ffffff</color>
+</resources>

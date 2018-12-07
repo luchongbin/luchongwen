@@ -1,0 +1,20 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<data>-->
+        <!--<import type="android.view.View" />-->
+        <!--<variable-->
+            <!--name="mCashBookViewModel"-->
+            <!--type="com.luchongbin.mycashbook.viewModel.CashBookViewModel" />-->
+    <!--</data>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/appbackground">
+        <com.rmondjone.xrecyclerview.XRecyclerView
+            android:id="@+id/xRcvItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10">
+        </com.rmondjone.xrecyclerview.XRecyclerView>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="mTitleModel"
+            type="com.luchongbin.mycashbook.model.TitleModel" />
+
+        <variable
+            name="mAddCashUserViewModel"
+            type="com.luchongbin.mycashbook.viewModel.AddCashUserViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent">
+
+        <include
+            android:id="@+id/ic_title"
+            layout="@layout/title"
+            app:mBaseViewModel="@{mAddCashUserViewModel}"
+            app:mTitleModel="@{mTitleModel}" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ic_title"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/margin_8">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_25"
+                android:layout_marginTop="@dimen/margin_15"
+                android:layout_marginEnd="@dimen/margin_25">
+
+                <LinearLayout
+                    android:id="@+id/rl_userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/userName"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/et_userName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/translucent"
+                        android:hint="请输入账户名"
+                        android:maxLength="20"
+                        android:maxLines="1"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rl_nickName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_below="@+id/rl_userName"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/nickName"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/et_nickName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/translucent"
+                        android:hint="请输入昵称"
+                        android:maxLength="20"
+                        android:maxLines="1"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rl_mobilePhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_below="@+id/rl_nickName"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/mobilePhone"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/et_mobilePhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/translucent"
+                        android:hint="请输入电话"
+                        android:maxLength="12"
+                        android:maxLines="1"
+                        android:inputType="number"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rl_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_below="@+id/rl_mobilePhone"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/company"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/et_company"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/translucent"
+                        android:hint="请输入公司名称"
+                        android:maxLength="20"
+                        android:maxLines="1"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/rl_company"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/remarks"
+                        android:textSize="@dimen/text_size_18sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/et_remarks"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_160"
+                        android:background="@drawable/translucent"
+                        android:gravity="top"
+                        android:maxLines="10"
+                        android:textColor="@color/tab_text_normal"
+                        android:textSize="@dimen/text_size_16sp" />
+                </LinearLayout>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+</layout>
