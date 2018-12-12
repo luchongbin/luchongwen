@@ -33,6 +33,7 @@ public class AddCashBookViewModel extends BaseViewModel {
     private AddCashBookActivity mAddCashBookActivity;
     private CashBook mCashBookBean;
     private boolean isEditable;
+    private CashBookModel mCashBookModel;
     public AddCashBookViewModel(AddCashBookActivity mActivity, ViewDataBinding binding) {
         super(mActivity);
         this.mAddCashBookActivity = mActivity;
@@ -44,13 +45,15 @@ public class AddCashBookViewModel extends BaseViewModel {
         isEditable = mActivity.getIntent().getBooleanExtra(Constants.CashBookDetails.EDITABLE, false);
         long mCashBookId = mActivity.getIntent().getLongExtra(Constants.CashBookDetails.CASHBOOKID, -1);
         mBinding.icTitle.action.setVisibility(isEditable?View.VISIBLE:View.GONE);
-        CashBookModel mCashBookModel = new CashBookModel();
+        mCashBookModel = new CashBookModel();
         mCashBookModel.setTitle(isEditable?"添加单条账本信息":"单条账本详情");
         mCashBookModel.setRightText("保存");
         mCashBookModel.setEditable(isEditable);
         if (!isEditable) {
+            setBackground(mBinding.etDigFlatUnitPrice);
             setBackground(mBinding.etDigFlatHour);
             setBackground(mBinding.etDigFlatAmount);
+            setBackground(mBinding.etFractureUnitPrice);
             setBackground(mBinding.etFractureHour);
             setBackground(mBinding.etFractureAmount);
             setBackground(mBinding.etData);
@@ -58,10 +61,12 @@ public class AddCashBookViewModel extends BaseViewModel {
             mCashBookBean = DataBaseTool.getInstance().getCashBookByCashBookId(mCashBookId);
             mBinding.etAutograph.setBackgroundResource(mCashBookBean.getAutograph()!=null&& mCashBookBean.getAutograph().length() >0?
                     R.drawable.translucent_gray:R.drawable.translucent);
+            mCashBookModel.setDigFlatUnitPrice(StringUtils.formatDouble(mCashBookBean.getDigFlatUnitPrice()));
             mCashBookModel.setDigFlatHour(mCashBookBean.getDigFlatHour() + "");
-            mCashBookModel.setDigFlatTotalAmount(mCashBookBean.getDigFlatTotalAmount() + "");
+            mCashBookModel.setDigFlatTotalAmount(StringUtils.formatDouble(mCashBookBean.getDigFlatTotalAmount()));
+            mCashBookModel.setFractureUnitPrice(StringUtils.formatDouble(mCashBookBean.getFractureUnitPrice()));
             mCashBookModel.setFractureHour(mCashBookBean.getFractureHour() + "");
-            mCashBookModel.setFractureTotalAmount(mCashBookBean.getFractureTotalAmount() + "");
+            mCashBookModel.setFractureTotalAmount(StringUtils.formatDouble(mCashBookBean.getFractureTotalAmount()));
             mCashBookModel.setDateTime(mCashBookBean.getDate());
             mCashBookModel.setRemarks(mCashBookBean.getRemarks());
             mCashBookModel.setAutograph(mCashBookBean.getAutograph());
@@ -111,6 +116,8 @@ public class AddCashBookViewModel extends BaseViewModel {
             dismiss(mCashBookBean.getId(),null);
             return;
         }
+        String digFlatUnitPrice = mBinding.etDigFlatUnitPrice.getText().toString();//挖平单价
+        String fractureUnitPrice = mBinding.etFractureUnitPrice.getText().toString();//破碎单价
         String mAutograph = mBinding.etAutograph.getText().toString();//施工签字
         String digFlatHour = mBinding.etDigFlatHour.getText().toString();//挖平时长
         String digFlatTotalAmount = mBinding.etDigFlatAmount.getText().toString();//挖平金额
@@ -127,7 +134,9 @@ public class AddCashBookViewModel extends BaseViewModel {
         long userId = mActivity.getIntent().getLongExtra(Constants.CashBookDetails.USERID, -1);
         mCashBookBean = new CashBook();
         mCashBookBean.setCashBookId(StringUtils.genItemId());
+        mCashBookBean.setDigFlatUnitPrice(StringUtils.isEmpty(digFlatUnitPrice) ? 0.00 : Double.parseDouble(digFlatUnitPrice));
         mCashBookBean.setDigFlatHour(StringUtils.isEmpty(digFlatHour) ? 0.00 : Double.parseDouble(digFlatHour));
+        mCashBookBean.setFractureUnitPrice(StringUtils.isEmpty(fractureUnitPrice) ? 0.00 : Double.parseDouble(fractureUnitPrice));
         mCashBookBean.setDigFlatTotalAmount(StringUtils.isEmpty(digFlatTotalAmount) ? 0.00 : Double.parseDouble(digFlatTotalAmount));
         mCashBookBean.setFractureHour(StringUtils.isEmpty(fractureHour) ? 0.00 : Double.parseDouble(fractureHour));
         mCashBookBean.setFractureTotalAmount(StringUtils.isEmpty(fractureTotalAmount) ? 0.00 : Double.parseDouble(fractureTotalAmount));
@@ -148,6 +157,40 @@ public class AddCashBookViewModel extends BaseViewModel {
         mActivity.setResult(Constants.CashBookDetails.RRESULTCODE, mIntent);
         mAddCashBookActivity.finish();
     }
+    public TextWatcher mTextWatcher0 = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+        @Override
+        public void onTextChanged(CharSequence s, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+            String temp = editable.toString();
+            int posDot = temp.indexOf(".");
+            if (posDot <= 0){
+                setDigFlatTotalAmount();
+                return;
+            }
+            if (temp.length() - posDot - 1 > 2) {
+                editable.delete(posDot + 3, posDot + 4);
+            }
+            setDigFlatTotalAmount();
+        }
+    };
+    private void setDigFlatTotalAmount(){
+        String digFlatUnitPrice = mBinding.etDigFlatUnitPrice.getText().toString();//挖平单价
+        String digFlatHour = mBinding.etDigFlatHour.getText().toString();//挖平时长
+        if(StringUtils.isEmpty(digFlatUnitPrice)||StringUtils.isEmpty(digFlatHour)){
+            mCashBookModel.setDigFlatTotalAmount("");
+        }else{
+            double mDigFlatUnitPrice = Double.parseDouble(digFlatUnitPrice);
+            double mDigFlatHour = Double.parseDouble(digFlatHour);
+            mCashBookModel.setDigFlatTotalAmount(StringUtils.formatDouble(mDigFlatUnitPrice*mDigFlatHour));
+        }
+    }
 
 
     public TextWatcher mTextWatcher = new TextWatcher() {
@@ -155,18 +198,35 @@ public class AddCashBookViewModel extends BaseViewModel {
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
 
         @Override
-        public void onTextChanged(CharSequence s, int i, int i1, int i2) {}
+        public void onTextChanged(CharSequence s, int i, int i1, int i2) {
+        }
 
         @Override
         public void afterTextChanged(Editable editable) {
+
             String temp = editable.toString();
             int posDot = temp.indexOf(".");
-            if (posDot <= 0) return;
+            if (posDot <= 0){
+                setFractureTotalAmount();
+                return;
+            }
             if (temp.length() - posDot - 1 > 2) {
                 editable.delete(posDot + 3, posDot + 4);
             }
+            setFractureTotalAmount();
         }
     };
+    private void setFractureTotalAmount(){
+        String fractureUnitPrice = mBinding.etFractureUnitPrice.getText().toString();//破碎单价
+        String fractureHour = mBinding.etFractureHour.getText().toString();//破碎时长
+        if(StringUtils.isEmpty(fractureUnitPrice)||StringUtils.isEmpty(fractureHour)){
+            mCashBookModel.setFractureTotalAmount("");
+        }else{
+            double mFractureUnitPrice = Double.parseDouble(fractureUnitPrice);
+            double mFractureHour = Double.parseDouble(fractureHour);
+            mCashBookModel.setFractureTotalAmount(StringUtils.formatDouble(mFractureUnitPrice*mFractureHour));
+        }
+    }
     public TextWatcher mTextWatcher1 = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }

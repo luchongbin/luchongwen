@@ -115,6 +115,8 @@ public class CashBookDetailsViewModel extends BaseViewModel {
         mRowDatas1.add(StringUtils.formatDouble1(mFractureHour));
         mRowDatas1.add(StringUtils.formatDouble(mFractureTotalAmount));
         mTableDatas.add(mRowDatas1);
+        String mTotalAmount = StringUtils.formatDouble(mDigFlatTotalAmount+mFractureTotalAmount);
+        mBinding.tvTotalAmount.setText("金额总合计："+mTotalAmount+"元");
         return mTableDatas;
     }
     public void getCashBookModels() {

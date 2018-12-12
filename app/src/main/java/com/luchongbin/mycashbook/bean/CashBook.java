@@ -18,23 +18,27 @@ public class CashBook {
     private Long id;
     private long cashBookId;
     private long userId;
+    private double digFlatUnitPrice;//挖平单价（元）
     private double digFlatHour;//挖平时间（小时）
     private double digFlatTotalAmount;//挖平金额（元）
+    private double fractureUnitPrice;//破碎单价（元）
     private double fractureHour;//破碎时间（小时）
     private double fractureTotalAmount;//破碎金额（元）
     private String date;//日期
     private String remarks;//备注
     private String autograph;//施工签名
-    @Generated(hash = 384587158)
-    public CashBook(Long id, long cashBookId, long userId, double digFlatHour,
-            double digFlatTotalAmount, double fractureHour,
-            double fractureTotalAmount, String date, String remarks,
-            String autograph) {
+    @Generated(hash = 1154965312)
+    public CashBook(Long id, long cashBookId, long userId, double digFlatUnitPrice,
+            double digFlatHour, double digFlatTotalAmount, double fractureUnitPrice,
+            double fractureHour, double fractureTotalAmount, String date,
+            String remarks, String autograph) {
         this.id = id;
         this.cashBookId = cashBookId;
         this.userId = userId;
+        this.digFlatUnitPrice = digFlatUnitPrice;
         this.digFlatHour = digFlatHour;
         this.digFlatTotalAmount = digFlatTotalAmount;
+        this.fractureUnitPrice = fractureUnitPrice;
         this.fractureHour = fractureHour;
         this.fractureTotalAmount = fractureTotalAmount;
         this.date = date;
@@ -103,6 +107,18 @@ public class CashBook {
     }
     public void setAutograph(String autograph) {
         this.autograph = autograph;
+    }
+    public double getDigFlatUnitPrice() {
+        return this.digFlatUnitPrice;
+    }
+    public void setDigFlatUnitPrice(double digFlatUnitPrice) {
+        this.digFlatUnitPrice = digFlatUnitPrice;
+    }
+    public double getFractureUnitPrice() {
+        return this.fractureUnitPrice;
+    }
+    public void setFractureUnitPrice(double fractureUnitPrice) {
+        this.fractureUnitPrice = fractureUnitPrice;
     }
 
 

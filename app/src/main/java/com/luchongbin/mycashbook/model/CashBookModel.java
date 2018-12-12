@@ -5,14 +5,17 @@ import android.databinding.Bindable;
 import com.luchongbin.mycashbook.BR;
 
 public class CashBookModel extends TitleModel {
+
     @Bindable
     private long cashBookId;
-
+    @Bindable
+    private String digFlatUnitPrice;//挖平单价（元）
     @Bindable
     private String digFlatHour;//挖平时间（小时）
     @Bindable
     private String digFlatTotalAmount;//挖平合同金额（元）
-
+    @Bindable
+    private String fractureUnitPrice;//破碎单价（元）
     @Bindable
     private String fractureHour;//破碎时间（小时）
     @Bindable
@@ -105,5 +108,23 @@ public class CashBookModel extends TitleModel {
     public void setAutograph(String autograph) {
         this.autograph = autograph;
         notifyPropertyChanged(BR.autograph);
+    }
+
+    public String getDigFlatUnitPrice() {
+        return digFlatUnitPrice;
+    }
+
+    public void setDigFlatUnitPrice(String digFlatUnitPrice) {
+        this.digFlatUnitPrice = digFlatUnitPrice;
+        notifyPropertyChanged(BR.digFlatUnitPrice);
+    }
+
+    public String getFractureUnitPrice() {
+        return fractureUnitPrice;
+    }
+
+    public void setFractureUnitPrice(String fractureUnitPrice) {
+        this.fractureUnitPrice = fractureUnitPrice;
+        notifyPropertyChanged(BR.fractureUnitPrice);
     }
 }

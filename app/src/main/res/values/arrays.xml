@@ -3,9 +3,9 @@
     <string-array name="table_title">
         <item>日期</item>
         <item>挖斗时间\n单位(小时)</item>
-        <item>挖斗金额\n单价(180元)</item>
+        <item>挖斗金额\n单位(元)</item>
         <item>破碎时间\n单位(小时)</item>
-        <item>破碎金额\n单价(240元)</item>
+        <item>破碎金额\n单位(元)</item>
         <item>施工签字</item>
         <item>备注</item>
     </string-array>

@@ -27,13 +27,15 @@ public class CashBookDao extends AbstractDao<CashBook, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property CashBookId = new Property(1, long.class, "cashBookId", false, "CASH_BOOK_ID");
         public final static Property UserId = new Property(2, long.class, "userId", false, "USER_ID");
-        public final static Property DigFlatHour = new Property(3, double.class, "digFlatHour", false, "DIG_FLAT_HOUR");
-        public final static Property DigFlatTotalAmount = new Property(4, double.class, "digFlatTotalAmount", false, "DIG_FLAT_TOTAL_AMOUNT");
-        public final static Property FractureHour = new Property(5, double.class, "fractureHour", false, "FRACTURE_HOUR");
-        public final static Property FractureTotalAmount = new Property(6, double.class, "fractureTotalAmount", false, "FRACTURE_TOTAL_AMOUNT");
-        public final static Property Date = new Property(7, String.class, "date", false, "DATE");
-        public final static Property Remarks = new Property(8, String.class, "remarks", false, "REMARKS");
-        public final static Property Autograph = new Property(9, String.class, "autograph", false, "AUTOGRAPH");
+        public final static Property DigFlatUnitPrice = new Property(3, double.class, "digFlatUnitPrice", false, "DIG_FLAT_UNIT_PRICE");
+        public final static Property DigFlatHour = new Property(4, double.class, "digFlatHour", false, "DIG_FLAT_HOUR");
+        public final static Property DigFlatTotalAmount = new Property(5, double.class, "digFlatTotalAmount", false, "DIG_FLAT_TOTAL_AMOUNT");
+        public final static Property FractureUnitPrice = new Property(6, double.class, "fractureUnitPrice", false, "FRACTURE_UNIT_PRICE");
+        public final static Property FractureHour = new Property(7, double.class, "fractureHour", false, "FRACTURE_HOUR");
+        public final static Property FractureTotalAmount = new Property(8, double.class, "fractureTotalAmount", false, "FRACTURE_TOTAL_AMOUNT");
+        public final static Property Date = new Property(9, String.class, "date", false, "DATE");
+        public final static Property Remarks = new Property(10, String.class, "remarks", false, "REMARKS");
+        public final static Property Autograph = new Property(11, String.class, "autograph", false, "AUTOGRAPH");
     }
 
 
@@ -52,13 +54,15 @@ public class CashBookDao extends AbstractDao<CashBook, Long> {
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"CASH_BOOK_ID\" INTEGER NOT NULL ," + // 1: cashBookId
                 "\"USER_ID\" INTEGER NOT NULL ," + // 2: userId
-                "\"DIG_FLAT_HOUR\" REAL NOT NULL ," + // 3: digFlatHour
-                "\"DIG_FLAT_TOTAL_AMOUNT\" REAL NOT NULL ," + // 4: digFlatTotalAmount
-                "\"FRACTURE_HOUR\" REAL NOT NULL ," + // 5: fractureHour
-                "\"FRACTURE_TOTAL_AMOUNT\" REAL NOT NULL ," + // 6: fractureTotalAmount
-                "\"DATE\" TEXT," + // 7: date
-                "\"REMARKS\" TEXT," + // 8: remarks
-                "\"AUTOGRAPH\" TEXT);"); // 9: autograph
+                "\"DIG_FLAT_UNIT_PRICE\" REAL NOT NULL ," + // 3: digFlatUnitPrice
+                "\"DIG_FLAT_HOUR\" REAL NOT NULL ," + // 4: digFlatHour
+                "\"DIG_FLAT_TOTAL_AMOUNT\" REAL NOT NULL ," + // 5: digFlatTotalAmount
+                "\"FRACTURE_UNIT_PRICE\" REAL NOT NULL ," + // 6: fractureUnitPrice
+                "\"FRACTURE_HOUR\" REAL NOT NULL ," + // 7: fractureHour
+                "\"FRACTURE_TOTAL_AMOUNT\" REAL NOT NULL ," + // 8: fractureTotalAmount
+                "\"DATE\" TEXT," + // 9: date
+                "\"REMARKS\" TEXT," + // 10: remarks
+                "\"AUTOGRAPH\" TEXT);"); // 11: autograph
     }
 
     /** Drops the underlying database table. */
@@ -77,24 +81,26 @@ public class CashBookDao extends AbstractDao<CashBook, Long> {
         }
         stmt.bindLong(2, entity.getCashBookId());
         stmt.bindLong(3, entity.getUserId());
-        stmt.bindDouble(4, entity.getDigFlatHour());
-        stmt.bindDouble(5, entity.getDigFlatTotalAmount());
-        stmt.bindDouble(6, entity.getFractureHour());
-        stmt.bindDouble(7, entity.getFractureTotalAmount());
+        stmt.bindDouble(4, entity.getDigFlatUnitPrice());
+        stmt.bindDouble(5, entity.getDigFlatHour());
+        stmt.bindDouble(6, entity.getDigFlatTotalAmount());
+        stmt.bindDouble(7, entity.getFractureUnitPrice());
+        stmt.bindDouble(8, entity.getFractureHour());
+        stmt.bindDouble(9, entity.getFractureTotalAmount());
  
         String date = entity.getDate();
         if (date != null) {
-            stmt.bindString(8, date);
+            stmt.bindString(10, date);
         }
  
         String remarks = entity.getRemarks();
         if (remarks != null) {
-            stmt.bindString(9, remarks);
+            stmt.bindString(11, remarks);
         }
  
         String autograph = entity.getAutograph();
         if (autograph != null) {
-            stmt.bindString(10, autograph);
+            stmt.bindString(12, autograph);
         }
     }
 
@@ -108,24 +114,26 @@ public class CashBookDao extends AbstractDao<CashBook, Long> {
         }
         stmt.bindLong(2, entity.getCashBookId());
         stmt.bindLong(3, entity.getUserId());
-        stmt.bindDouble(4, entity.getDigFlatHour());
-        stmt.bindDouble(5, entity.getDigFlatTotalAmount());
-        stmt.bindDouble(6, entity.getFractureHour());
-        stmt.bindDouble(7, entity.getFractureTotalAmount());
+        stmt.bindDouble(4, entity.getDigFlatUnitPrice());
+        stmt.bindDouble(5, entity.getDigFlatHour());
+        stmt.bindDouble(6, entity.getDigFlatTotalAmount());
+        stmt.bindDouble(7, entity.getFractureUnitPrice());
+        stmt.bindDouble(8, entity.getFractureHour());
+        stmt.bindDouble(9, entity.getFractureTotalAmount());
  
         String date = entity.getDate();
         if (date != null) {
-            stmt.bindString(8, date);
+            stmt.bindString(10, date);
         }
  
         String remarks = entity.getRemarks();
         if (remarks != null) {
-            stmt.bindString(9, remarks);
+            stmt.bindString(11, remarks);
         }
  
         String autograph = entity.getAutograph();
         if (autograph != null) {
-            stmt.bindString(10, autograph);
+            stmt.bindString(12, autograph);
         }
     }
 
@@ -140,13 +148,15 @@ public class CashBookDao extends AbstractDao<CashBook, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.getLong(offset + 1), // cashBookId
             cursor.getLong(offset + 2), // userId
-            cursor.getDouble(offset + 3), // digFlatHour
-            cursor.getDouble(offset + 4), // digFlatTotalAmount
-            cursor.getDouble(offset + 5), // fractureHour
-            cursor.getDouble(offset + 6), // fractureTotalAmount
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // date
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // remarks
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9) // autograph
+            cursor.getDouble(offset + 3), // digFlatUnitPrice
+            cursor.getDouble(offset + 4), // digFlatHour
+            cursor.getDouble(offset + 5), // digFlatTotalAmount
+            cursor.getDouble(offset + 6), // fractureUnitPrice
+            cursor.getDouble(offset + 7), // fractureHour
+            cursor.getDouble(offset + 8), // fractureTotalAmount
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // date
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // remarks
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11) // autograph
         );
         return entity;
     }
@@ -156,13 +166,15 @@ public class CashBookDao extends AbstractDao<CashBook, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setCashBookId(cursor.getLong(offset + 1));
         entity.setUserId(cursor.getLong(offset + 2));
-        entity.setDigFlatHour(cursor.getDouble(offset + 3));
-        entity.setDigFlatTotalAmount(cursor.getDouble(offset + 4));
-        entity.setFractureHour(cursor.getDouble(offset + 5));
-        entity.setFractureTotalAmount(cursor.getDouble(offset + 6));
-        entity.setDate(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setRemarks(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setAutograph(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setDigFlatUnitPrice(cursor.getDouble(offset + 3));
+        entity.setDigFlatHour(cursor.getDouble(offset + 4));
+        entity.setDigFlatTotalAmount(cursor.getDouble(offset + 5));
+        entity.setFractureUnitPrice(cursor.getDouble(offset + 6));
+        entity.setFractureHour(cursor.getDouble(offset + 7));
+        entity.setFractureTotalAmount(cursor.getDouble(offset + 8));
+        entity.setDate(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setRemarks(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setAutograph(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
      }
     
     @Override
